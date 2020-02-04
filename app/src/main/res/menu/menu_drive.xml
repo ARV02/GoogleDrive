@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="org.example.eventosx.FotografiasDrive">
+
+    <item
+        android:id="@+id/action_camara"
+        android:orderInCategory="100"
+        android:title="Tomar Foto"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_galeria"
+        android:orderInCategory="101"
+        android:title="Elegir Imagen"
+        app:showAsAction="never" />
+</menu>
