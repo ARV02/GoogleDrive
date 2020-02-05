@@ -1,11 +1,15 @@
 package com.example.googledrive;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,8 +27,11 @@ public class FotografiasDrive extends AppCompatActivity {
     static GoogleAccountCredential credential = null;
     static String nombreCuenta = null;
     static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
-
-
+    static final String DISPLAY_MESSAGE_ACTION = "org.example.eventos.DISPLAY_MESSAGE";
+    private static Handler manejador = new Handler();
+    private static Handler carga = new Handler();
+    private static ProgressDialog dialogo;
+    private Boolean noAutoriza = false;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,5 +64,31 @@ public class FotografiasDrive extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+    static void mostrarMensaje(final Context context, final String mensaje){
+        manejador.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    static void mostrarCarga(final Context context, final String mensaje){
+        carga.post(new Runnable() {
+            @Override
+            public void run() {
+                dialogo = new ProgressDialog(context);
+                dialogo.setMessage(mensaje);
+                dialogo.show();
+            }
+        });
+    }
+    static void ocultarCarga(final Context context){
+        carga.post(new Runnable() {
+            @Override
+            public void run() {
+                dialogo.dismiss();
+            }
+        });
     }
 }
