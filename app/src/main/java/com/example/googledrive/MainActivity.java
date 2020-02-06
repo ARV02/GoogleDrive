@@ -13,6 +13,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //setContentView(R.layout.fotografias_drive);
         String[] Permisos = {android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.GET_ACCOUNTS};
+                android.Manifest.permission.GET_ACCOUNTS, Manifest.permission.CAMERA};
     }
 }
