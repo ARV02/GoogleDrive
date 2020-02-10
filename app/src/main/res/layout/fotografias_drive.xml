@@ -13,8 +13,7 @@
             android:id="@+id/toolbar"
             android:layout_width="45dp"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:menu="@menu/menu_drive"/>
+            android:background="?attr/colorPrimary" />
     </com.google.android.material.appbar.AppBarLayout>
     <TextView
         android:id="@+id/display"

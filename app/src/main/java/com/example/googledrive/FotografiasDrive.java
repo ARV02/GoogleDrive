@@ -75,16 +75,15 @@ public class FotografiasDrive extends AppCompatActivity {
         registerReceiver(mHandleMessageReceiver, new IntentFilter(DISPLAY_MESSAGE_ACTION));
         mDisplay = findViewById(R.id.display);
         Bundle extras = getIntent().getExtras();
-        evento = extras.getString("evento");
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //evento = extras.getString("evento");
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
         credential = GoogleAccountCredential.usingOAuth2(this, Arrays.asList(DriveScopes.DRIVE));
         SharedPreferences prefs = getSharedPreferences("Preferencias", Context.MODE_PRIVATE);
         nombreCuenta = prefs.getString("NombreCuenta", null);
         noAutoriza = prefs.getBoolean("Noautoriza", false);
         idCarpeta = prefs.getString("idCarpeta", null);
         idCarpetaEvento = prefs.getString("idCarpeta_" + evento, null);
-
         if (!noAutoriza) {
             if (nombreCuenta == null) {
                 PedirCredenciales();
@@ -108,7 +107,7 @@ public class FotografiasDrive extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        View vista = (View) findViewById(android.R.id.content);
+        View vista = findViewById(android.R.id.content);
         int id = item.getItemId();
         switch (id) {
             case R.id.action_camara:
